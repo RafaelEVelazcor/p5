@@ -10,6 +10,14 @@
 	"observability": {
 		"enabled": true
 	},
+	"d1_databases": [
+		{
+			"binding": "p5_d",
+			"database_name": "p5-d",
+			"database_id": "d2e2c6c4-5fa1-4885-b8fe-51fdfcb9907b",
+			"migrations_dir": "migrations"
+		}
+	],
 	"upload_source_maps": true
 	/**
 	 * Smart Placement
