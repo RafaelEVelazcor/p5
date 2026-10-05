@@ -13,6 +13,18 @@
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response("Hello World!  3");
+		const { pathname } = new URL(request.url);
+
+		if (pathname === "/api/personas" && request.method === "GET") {
+			const { results } = await env.p5_d.prepare(
+				"SELECT id, nombre, edad FROM personas ORDER BY id",
+			).all();
+
+			return Response.json(results);
+		}
+
+		return new Response("Consulta las personas en /api/personas", {
+			status: pathname === "/api/personas" ? 405 : 404,
+		});
 	},
 } satisfies ExportedHandler<Env>;
